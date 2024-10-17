@@ -1,0 +1,84 @@
+<template>
+  <v-container>
+    <v-row>
+      <v-col cols="12">
+        <SpentStats />
+      </v-col>
+
+      <!-- <v-col cols="12">
+        <v-img height="300" src="@/assets/BLCbg.png" />
+      </v-col> -->
+      <v-col v-show="chestStore.chestCount">
+        3rd Drop:
+        <DropDisplay :drop-element="chestStore.leftDrops.lastRandom" />
+      </v-col>
+      <v-col v-show="chestStore.chestCount">
+        4th Drop:
+        <DropDisplay :drop-element="chestStore.rightDrops.lastRandom" />
+      </v-col>
+      <v-col v-show="chestStore.chestCount">
+        5th Drop:
+        <DropDisplay
+          v-show="chestStore.fifthDropProc"
+          :drop-element="chestStore.fifthDrops.lastRandom"
+        />
+        <DropDisplay
+          v-show="!chestStore.fifthDropProc"
+          :drop-element="noFifthDrop"
+        />
+      </v-col>
+      <v-col cols="12" class="d-flex justify-center align-center">
+        <v-btn
+          size="x-large"
+          rounded="pill"
+          height="90"
+          width="90"
+          @click="chestStore.openNewChest"
+        >
+          <v-img
+            :src="blcKeyImagePath"
+            rounded="pill"
+            min-width="64"
+            class="buttonImage"
+          >
+            <div class="d-flex justify-center align-center openButtonText">
+              <span> OPEN </span>
+            </div>
+          </v-img>
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script setup>
+import DropDisplay from "@/components/DropDisplay.vue";
+import { useChestStore } from "@/store/chestStore";
+import SpentStats from "./SpentStats.vue";
+import { computed, ref } from "vue";
+import { DropElement } from "@/classes/DropElement";
+
+const noFifthDrop = ref(new DropElement(77359, "No Drop"));
+
+const blcKeyImagePath = computed(() => {
+  if (chestStore.goldenKeyMode) {
+    return "/src/assets/goldenBLCKeyItem.png";
+  } else {
+    return "/src/assets/BLCKeyItem.png";
+  }
+});
+
+const chestStore = useChestStore();
+</script>
+
+<style scoped>
+.openButtonText {
+  text-shadow: 2px 2px 3px black, -2px 2px 3px black, 2px -2px 3px black,
+    -2px -2px 3px black;
+  height: 100%;
+}
+
+.buttonImage {
+  height: 100%;
+}
+</style>

@@ -15,6 +15,7 @@ import { createVuetify } from "vuetify";
 export default createVuetify({
   theme: {
     defaultTheme: "dark",
+    options: { customProperties: true },
     themes: {
       light: {
         colors: {

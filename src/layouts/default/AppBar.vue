@@ -1,13 +1,14 @@
 <template>
-  <v-app-bar flat>
+  <v-app-bar>
+    <v-app-bar-icon>
+      <v-img src="@/assets/BLChestItem.png" min-width="64" />
+    </v-app-bar-icon>
     <v-app-bar-title>
-      <v-icon icon="mdi-circle-slice-6" />
-
-      Essentials Preset
+      <span> Black Lion Chest Simulator</span>
     </v-app-bar-title>
   </v-app-bar>
 </template>
 
 <script setup>
-  //
+//
 </script>

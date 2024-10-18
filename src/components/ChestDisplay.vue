@@ -36,10 +36,22 @@
           @click="chestStore.openNewChest"
         >
           <v-img
-            :src="blcKeyImagePath"
+            src="@/assets/BLCKeyItem.png"
             rounded="pill"
             min-width="64"
             class="buttonImage"
+            v-show="!chestStore.goldenKeyMode"
+          >
+            <div class="d-flex justify-center align-center openButtonText">
+              <span> OPEN </span>
+            </div>
+          </v-img>
+          <v-img
+            src="@/assets/goldenBLCKeyItem.png"
+            rounded="pill"
+            min-width="64"
+            class="buttonImage"
+            v-show="chestStore.goldenKeyMode"
           >
             <div class="d-flex justify-center align-center openButtonText">
               <span> OPEN </span>
@@ -55,18 +67,10 @@
 import DropDisplay from "@/components/DropDisplay.vue";
 import { useChestStore } from "@/store/chestStore";
 import SpentStats from "./SpentStats.vue";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { DropElement } from "@/classes/DropElement";
 
 const noFifthDrop = ref(new DropElement(77359, "No Drop"));
-
-const blcKeyImagePath = computed(() => {
-  if (chestStore.goldenKeyMode) {
-    return "/src/assets/goldenBLCKeyItem.png";
-  } else {
-    return "/src/assets/BLCKeyItem.png";
-  }
-});
 
 const chestStore = useChestStore();
 </script>

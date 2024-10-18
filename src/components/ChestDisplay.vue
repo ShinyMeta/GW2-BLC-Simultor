@@ -4,29 +4,6 @@
       <v-col cols="12">
         <SpentStats />
       </v-col>
-
-      <!-- <v-col cols="12">
-        <v-img height="300" src="@/assets/BLCbg.png" />
-      </v-col> -->
-      <v-col v-show="chestStore.chestCount">
-        3rd Drop:
-        <DropDisplay :drop-element="chestStore.leftDrops.lastRandom" />
-      </v-col>
-      <v-col v-show="chestStore.chestCount">
-        4th Drop:
-        <DropDisplay :drop-element="chestStore.rightDrops.lastRandom" />
-      </v-col>
-      <v-col v-show="chestStore.chestCount">
-        5th Drop:
-        <DropDisplay
-          v-show="chestStore.fifthDropProc"
-          :drop-element="chestStore.fifthDrops.lastRandom"
-        />
-        <DropDisplay
-          v-show="!chestStore.fifthDropProc"
-          :drop-element="noFifthDrop"
-        />
-      </v-col>
       <v-col cols="12" class="d-flex justify-center align-center">
         <v-btn
           size="x-large"
@@ -58,6 +35,28 @@
             </div>
           </v-img>
         </v-btn>
+      </v-col>
+      <!-- <v-col cols="12">
+        <v-img height="300" src="@/assets/BLCbg.png" />
+      </v-col> -->
+      <v-col v-show="chestStore.chestCount">
+        3rd Drop:
+        <DropDisplay :drop-element="chestStore.leftDrops.lastRandom" />
+      </v-col>
+      <v-col v-show="chestStore.chestCount">
+        4th Drop:
+        <DropDisplay :drop-element="chestStore.rightDrops.lastRandom" />
+      </v-col>
+      <v-col v-show="chestStore.chestCount">
+        5th Drop:
+        <DropDisplay
+          v-show="chestStore.fifthDropProc"
+          :drop-element="chestStore.fifthDrops.lastRandom"
+        />
+        <DropDisplay
+          v-show="!chestStore.fifthDropProc"
+          :drop-element="noFifthDrop"
+        />
       </v-col>
     </v-row>
   </v-container>

@@ -70,18 +70,28 @@ const expandConfig = ref([
   { value: "right", title: "Right Common Drops", list: rightFlatDropList },
   {
     value: "exclusive",
-    title: "Exclusive Drops",
+    title: computed(
+      () => `Exclusive Drops (${chestStore.exclusiveDrops.dropCount})`
+    ),
     list: exclusiveFlatDropList,
   },
   {
     value: "uncommon",
-    title: "Uncommon Drops",
+    title: computed(
+      () => `Uncommon Drops (${chestStore.uncommonDrops.dropCount})`
+    ),
     list: uncommonFlatDropList,
   },
-  { value: "rare", title: "Rare Drops", list: rareFlatDropList },
+  {
+    value: "rare",
+    title: computed(() => `Rare Drops (${chestStore.rareDrops.dropCount})`),
+    list: rareFlatDropList,
+  },
   {
     value: "superRare",
-    title: "Super Rare Drops",
+    title: computed(
+      () => `Super Rare Drops (${chestStore.superRareDrops.dropCount})`
+    ),
     list: superRareFlatDropList,
   },
 ]);

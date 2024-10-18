@@ -13,6 +13,7 @@ export class DropPool {
     this.weight = weight;
     this.exclude = exclude;
     this.lastRandom = null;
+    this.dropCount = 0;
   }
 
   getWeight(onlySubSum = false) {
@@ -27,12 +28,14 @@ export class DropPool {
   }
 
   resetHistory() {
+    this.dropCount = 0;
     for (let drop of this.dropList) {
       drop.resetHistory();
     }
   }
 
   randomDrop(chestsOpened) {
+    this.dropCount++;
     if (this.normalize) return this.randomDropNormalized(chestsOpened);
 
     const dropPoolTotal = this.getWeight();
